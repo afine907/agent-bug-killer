@@ -5,13 +5,14 @@ from __future__ import annotations
 import asyncio
 import json
 from pathlib import Path
+from typing import Any
 
 from langchain_core.tools import tool
 
 from core.settings import settings
 
 
-async def _run_async(coro):
+async def _run_async(coro: Any) -> Any:
     """Run an async coroutine, handling existing event loops."""
     try:
         loop = asyncio.get_running_loop()

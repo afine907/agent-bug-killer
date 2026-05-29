@@ -1,13 +1,16 @@
 """Shared test fixtures for bug-diagnoser scenario."""
 
+from __future__ import annotations
+
+from typing import Any
+from unittest.mock import MagicMock
+
 import pytest
 
 
 @pytest.fixture
-def mock_ssh_client():
+def mock_ssh_client() -> MagicMock:
     """Return a mock SSH client."""
-    from unittest.mock import MagicMock
-
     client = MagicMock()
     stdin = MagicMock()
     stdout = MagicMock()
@@ -19,7 +22,7 @@ def mock_ssh_client():
 
 
 @pytest.fixture
-def sample_server_info():
+def sample_server_info() -> dict[str, Any]:
     """Return sample server connection info."""
     return {
         "host": "test-server.example.com",

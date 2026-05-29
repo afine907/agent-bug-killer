@@ -103,12 +103,12 @@ def create_bug_diagnoser_agent(
 
 def diagnose_bug(
     bug_description: str,
-    server_info: dict | None = None,
+    server_info: dict[str, Any] | None = None,
     browser_ws: str | None = None,
     code_path: str | None = None,
     model: str = "anthropic:claude-sonnet-4-6",
     debug: bool = False,
-) -> dict:
+) -> dict[str, Any]:
     """Diagnose a production bug using multiple data sources.
 
     Args:
@@ -134,7 +134,7 @@ def diagnose_bug(
     if code_path:
         context_parts.append(f"Code path: {code_path}")
 
-    result = agent.invoke({
+    result: dict[str, Any] = agent.invoke({
         "messages": [{"role": "user", "content": "\n".join(context_parts)}]
     })
     return result

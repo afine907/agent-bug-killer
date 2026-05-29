@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
@@ -17,7 +19,7 @@ class HistoryEntry(BaseModel):
     id: str
     timestamp: str
     summary: str
-    metadata: dict = Field(default_factory=dict)
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class HistoryListResponse(BaseModel):
@@ -49,7 +51,7 @@ async def list_history(
 
 
 @router.get("/history/{report_id}")
-async def get_report(report_id: str) -> dict:
+async def get_report(report_id: str) -> dict[str, Any]:
     """Get a specific diagnostic report.
 
     Args:
@@ -68,7 +70,7 @@ async def get_report(report_id: str) -> dict:
 
 
 @router.delete("/history/{report_id}")
-async def delete_report(report_id: str) -> dict:
+async def delete_report(report_id: str) -> dict[str, str]:
     """Delete a diagnostic report.
 
     Args:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -16,7 +17,7 @@ def history(tmp_path: Path) -> DiagnosticHistory:
 
 
 @pytest.fixture
-def sample_report() -> dict:
+def sample_report() -> dict[str, Any]:
     """Return a sample diagnostic report."""
     return {
         "summary": "Database connection failed",
@@ -30,7 +31,7 @@ class TestDiagnosticHistory:
     """Tests for DiagnosticHistory class."""
 
     def test_save_and_load(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should save and load a report."""
         report_id = history.save(sample_report)
@@ -41,7 +42,7 @@ class TestDiagnosticHistory:
         assert loaded["report"]["summary"] == "Database connection failed"
 
     def test_save_with_metadata(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should save metadata alongside report."""
         metadata = {"bug": "DB connection error", "source": "api"}
@@ -56,7 +57,7 @@ class TestDiagnosticHistory:
         assert history.load("nonexistent") is None
 
     def test_list_reports(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should list saved reports."""
         history.save(sample_report)
@@ -67,7 +68,7 @@ class TestDiagnosticHistory:
         assert all("id" in r for r in reports)
 
     def test_list_reports_with_limit(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should respect limit parameter."""
         for _ in range(5):
@@ -77,7 +78,7 @@ class TestDiagnosticHistory:
         assert len(reports) == 3
 
     def test_delete_report(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should delete a report."""
         report_id = history.save(sample_report)
@@ -106,7 +107,7 @@ class TestDiagnosticHistory:
         assert "Database" in results[0]["summary"]
 
     def test_search_case_insensitive(
-        self, history: DiagnosticHistory, sample_report: dict
+        self, history: DiagnosticHistory, sample_report: dict[str, Any]
     ) -> None:
         """Should perform case-insensitive search."""
         history.save(sample_report)

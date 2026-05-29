@@ -74,7 +74,7 @@ def analyze_log(
     log_path: str | Path,
     model: str = "anthropic:claude-sonnet-4-6",
     debug: bool = False,
-) -> dict:
+) -> dict[str, Any]:
     """Analyze a log file and return a diagnostic report.
 
     Args:
@@ -86,7 +86,7 @@ def analyze_log(
         A diagnostic report dictionary.
     """
     agent = create_log_analyzer_agent(model=model, debug=debug)
-    result = agent.invoke({
+    result: dict[str, Any] = agent.invoke({
         "messages": [{"role": "user", "content": f"Analyze the log file at: {log_path}"}]
     })
     return result

@@ -67,7 +67,8 @@ class DiagnosticHistory:
             return None
 
         try:
-            return json.loads(file_path.read_text(encoding="utf-8"))
+            data: dict[str, Any] = json.loads(file_path.read_text(encoding="utf-8"))
+            return data
         except (json.JSONDecodeError, OSError):
             return None
 

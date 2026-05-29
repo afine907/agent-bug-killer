@@ -41,10 +41,10 @@ def analyze(
         if not path.exists():
             console.print(f"[red]Error: File not found: {log_file}[/red]")
             sys.exit(1)
-        content = path.read_text(encoding="utf-8")
+        content: str = path.read_text(encoding="utf-8")
         console.print(f"[blue]Analyzing log file: {log_file}[/blue]")
     else:
-        content = log_text
+        content = log_text or ""
         console.print("[blue]Analyzing provided log text...[/blue]")
 
     # Import here to avoid circular imports

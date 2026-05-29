@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import shlex
+from typing import Any
 
 import paramiko
 from langchain_core.tools import tool
@@ -39,7 +40,7 @@ def ssh_exec(
     client.set_missing_host_key_policy(paramiko.WarningPolicy())
 
     try:
-        connect_kwargs: dict = {
+        connect_kwargs: dict[str, Any] = {
             "hostname": host,
             "port": port,
             "username": user,
@@ -52,8 +53,8 @@ def ssh_exec(
         _, stdout, stderr = client.exec_command(command, timeout=timeout)
 
         exit_status = stdout.channel.recv_exit_status()
-        output = stdout.read().decode("utf-8", errors="replace")
-        error_output = stderr.read().decode("utf-8", errors="replace")
+        output: str = stdout.read().decode("utf-8", errors="replace")
+        error_output: str = stderr.read().decode("utf-8", errors="replace")
 
         if exit_status != 0:
             return f"Command failed (exit code {exit_status}):\n{error_output or output}"
@@ -93,7 +94,7 @@ def ssh_read_log(
     lines = max(1, min(lines, 10000))
     safe_path = shlex.quote(path)
     command = f"tail -n {lines} {safe_path}"
-    return ssh_exec.invoke({
+    result = ssh_exec.invoke({
         "host": host,
         "user": user,
         "command": command,
@@ -101,3 +102,4 @@ def ssh_read_log(
         "port": port,
         "timeout": timeout,
     })
+    return str(result)

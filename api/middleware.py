@@ -20,7 +20,7 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
         """Process and log the request."""
         start_time = time.time()
 
-        response = await call_next(request)
+        response: Response = await call_next(request)
 
         duration = time.time() - start_time
         logger.info(
@@ -70,4 +70,5 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         # Record request
         self.requests[client_ip].append(now)
 
-        return await call_next(request)
+        response: Response = await call_next(request)
+        return response
