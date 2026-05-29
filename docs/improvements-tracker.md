@@ -15,3 +15,10 @@
 | IMP-009 | 5 | ✅ done | learnings 文档 | 补全基础 |
 | IMP-010 | 6 | ✅ done | 场景 README 文件 | 补全基础 |
 | IMP-011 | 7 | ✅ done | 改进 .env.example | 补全基础 |
+| IMP-012 | 9 | ✅ done | settings.py 增强 | 补全基础 |
+| IMP-013 | 11 | ✅ done | bug_diagnoser diagnose.md | 补全基础 |
+| IMP-014 | 11 | ✅ done | 测试样本数据 | 补全基础 |
+| IMP-015 | 15 | ✅ done | core/__init__.py 导出 | 补全基础 |
+| IMP-016 | 17 | ✅ done | GitHub issue 模板 | 补全基础 |
+| IMP-017 | 17 | ✅ done | PR 模板 | 补全基础 |
+| IMP-018 | 17 | ✅ done | CONTRIBUTING.md | 补全基础 |

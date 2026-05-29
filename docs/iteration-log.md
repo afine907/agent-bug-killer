@@ -22,6 +22,37 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 17-20 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-016: 缺少 GitHub issue 模板 (product, low)
+- IMP-017: 缺少 PR 模板 (product, low)
+- IMP-018: 缺少 CONTRIBUTING.md (product, medium)
+
+### 实现
+- ✅ IMP-016: 创建 bug_report.md 和 feature_request.md
+- ✅ IMP-017: 创建 pull_request_template.md
+- ✅ IMP-018: 创建 CONTRIBUTING.md (开发流程、代码规范、测试指南)
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
+## Round 15-16 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-015: core/__init__.py 缺少公共 API 导出 (product, medium)
+
+### 实现
+- ✅ IMP-015: 导出所有公共 API
+- ✅ 创建 stage1-review.md 中期审查报告
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
 ## Round 11-14 — 补全基础 (2026-05-29)
 
 ### 审查

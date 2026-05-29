@@ -16,6 +16,8 @@ dependencies = [
     "pydantic-settings>=2.0",
     "rich>=13.0",
     "click>=8.0",
+    "fastapi>=0.136.3",
+    "uvicorn>=0.48.0",
 ]
 
 [project.optional-dependencies]
