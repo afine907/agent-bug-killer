@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
@@ -18,12 +17,18 @@ console = Console()
 @click.option("--text", "-t", "log_text", help="Raw log text to analyze")
 @click.option("--model", "-m", default="anthropic:claude-sonnet-4-6", help="LLM model to use")
 @click.option("--output", "-o", type=click.Path(), help="Output file for the report")
+@click.option(
+    "--format", "fmt", default="json",
+    type=click.Choice(["json", "markdown", "html"]),
+    help="Output format",
+)
 @click.option("--debug", is_flag=True, help="Enable debug mode")
 def analyze(
     log_file: str | None,
     log_text: str | None,
     model: str,
     output: str | None,
+    fmt: str,
     debug: bool,
 ) -> None:
     """Analyze a log file or log text for errors."""
@@ -43,6 +48,7 @@ def analyze(
         console.print("[blue]Analyzing provided log text...[/blue]")
 
     # Import here to avoid circular imports
+    from core.formatters import format_report
     from scenarios.log_analyzer.src.tools.log_parser import log_parser
 
     console.print("[dim]Parsing log entries...[/dim]")
@@ -69,13 +75,15 @@ def analyze(
         ))
 
     report = {
+        "summary": f"Found {len(error_entries)} error(s)",
         "total_errors": len(error_entries),
         "errors": error_entries,
     }
 
     if output:
-        Path(output).write_text(json.dumps(report, indent=2), encoding="utf-8")
-        console.print(f"\n[green]Report saved to: {output}[/green]")
+        formatted = format_report(report, fmt)
+        Path(output).write_text(formatted, encoding="utf-8")
+        console.print(f"\n[green]Report saved to: {output} ({fmt} format)[/green]")
     else:
         console.print("\n[dim]Use --output to save the full report to a file.[/dim]")
 
