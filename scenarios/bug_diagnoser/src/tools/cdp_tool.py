@@ -77,8 +77,9 @@ async def cdp_screenshot(
         output_path = str(Path(settings.cdp_screenshot_dir) / "screenshot.png")
 
     try:
-        import websockets
         import base64
+
+        import websockets
 
         async def _screenshot() -> str:
             ws = await asyncio.wait_for(websockets.connect(ws_url), timeout=settings.cdp_timeout)
@@ -87,12 +88,19 @@ async def cdp_screenshot(
             await ws.send(json.dumps({
                 "id": 1,
                 "method": "Emulation.setDeviceMetricsOverride",
-                "params": {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": False},
+                "params": {
+                    "width": width, "height": height,
+                    "deviceScaleFactor": 1, "mobile": False,
+                },
             }))
             await ws.recv()
 
             # Take screenshot
-            await ws.send(json.dumps({"id": 2, "method": "Page.captureScreenshot", "params": {"format": "png"}}))
+            await ws.send(json.dumps({
+                "id": 2,
+                "method": "Page.captureScreenshot",
+                "params": {"format": "png"},
+            }))
             response = json.loads(await ws.recv())
 
             if "result" in response and "data" in response["result"]:
@@ -151,7 +159,7 @@ async def cdp_console(ws_url: str, levels: str = "error,warning") -> str:
                             "source": entry.get("source", ""),
                             "timestamp": entry.get("timestamp", 0),
                         })
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 pass
             except json.JSONDecodeError:
                 pass
@@ -159,9 +167,9 @@ async def cdp_console(ws_url: str, levels: str = "error,warning") -> str:
             await ws.close()
 
             # Filter by level
-            filter_levels = [l.strip().lower() for l in levels.split(",")]
+            filter_levels = [lv.strip().lower() for lv in levels.split(",")]
             if filter_levels:
-                logs = [l for l in logs if l["level"].lower() in filter_levels]
+                logs = [entry for entry in logs if entry["level"].lower() in filter_levels]
 
             return json.dumps(logs, indent=2)
 
@@ -213,7 +221,7 @@ async def cdp_network(ws_url: str) -> str:
                             if r["url"] == url:
                                 r["status"] = status
                                 break
-            except asyncio.TimeoutError:
+            except TimeoutError:
                 pass
             except json.JSONDecodeError:
                 pass

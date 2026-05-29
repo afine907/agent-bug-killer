@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from scenarios.log_analyzer.src.agent import (
     create_log_analyzer_agent,
 )

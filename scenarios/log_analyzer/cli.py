@@ -9,7 +9,6 @@ from pathlib import Path
 import click
 from rich.console import Console
 from rich.panel import Panel
-from rich.syntax import Syntax
 
 console = Console()
 
@@ -63,7 +62,8 @@ def analyze(
             f"[dim]Level: {entry['level']}[/dim]\n"
             f"[dim]Source: {entry['source'] or 'N/A'}[/dim]\n"
             f"[dim]Time: {entry['timestamp'] or 'N/A'}[/dim]"
-            + (f"\n\n[bold]Stack Trace:[/bold]\n{entry['stack_trace']}" if entry.get("stack_trace") else ""),
+            + (f"\n\n[bold]Stack Trace:[/bold]\n{entry['stack_trace']}"
+               if entry.get("stack_trace") else ""),
             title=f"Error #{i}",
             border_style="red",
         ))

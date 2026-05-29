@@ -1,8 +1,6 @@
 """Tests for CDP tools."""
 
-from unittest.mock import MagicMock, patch
-
-import pytest
+from unittest.mock import patch
 
 from scenarios.bug_diagnoser.src.tools.cdp_tool import (
     cdp_connect,

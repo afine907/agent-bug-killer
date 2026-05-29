@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-import pytest
-
 from scenarios.bug_diagnoser.src.tools.code_search import code_search
 
 

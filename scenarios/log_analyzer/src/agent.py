@@ -6,10 +6,12 @@ from pathlib import Path
 from typing import Any
 
 from core.base_agent import AgentConfig, create_agent
+from core.prompt_loader import load_scenario_prompt
 from scenarios.log_analyzer.src.tools.file_reader import file_reader
 from scenarios.log_analyzer.src.tools.log_parser import log_parser
 
-SYSTEM_PROMPT = """You are a Log Analyzer Agent specialized in diagnosing application errors from log files.
+_DEFAULT_SYSTEM_PROMPT = """\
+You are a Log Analyzer Agent specialized in diagnosing application errors from log files.
 
 Your Capabilities:
 - Read log files from disk using the file_reader tool
@@ -41,6 +43,9 @@ Analysis Rules:
 4. Look for patterns across multiple errors
 5. Correlate timestamps to understand error sequences
 6. Provide actionable recommendations for each error"""
+
+_SCENARIO_DIR = Path(__file__).resolve().parent.parent.parent
+SYSTEM_PROMPT = load_scenario_prompt(_SCENARIO_DIR, default=_DEFAULT_SYSTEM_PROMPT)
 
 
 def create_log_analyzer_agent(

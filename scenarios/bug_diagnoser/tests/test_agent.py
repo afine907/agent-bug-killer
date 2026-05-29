@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from scenarios.bug_diagnoser.src.agent import (
     create_bug_diagnoser_agent,
 )

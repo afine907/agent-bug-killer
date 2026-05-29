@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from core.base_agent import AgentConfig, create_agent
 
 

@@ -2,15 +2,24 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from core.base_agent import AgentConfig, create_agent
-from scenarios.bug_diagnoser.src.tools.ssh_tool import ssh_exec, ssh_read_log
-from scenarios.bug_diagnoser.src.tools.cdp_tool import cdp_connect, cdp_screenshot, cdp_console, cdp_network
+from core.prompt_loader import load_scenario_prompt
+from scenarios.bug_diagnoser.src.tools.cdp_tool import (
+    cdp_connect,
+    cdp_console,
+    cdp_network,
+    cdp_screenshot,
+)
 from scenarios.bug_diagnoser.src.tools.code_search import code_search
+from scenarios.bug_diagnoser.src.tools.ssh_tool import ssh_exec, ssh_read_log
 from scenarios.log_analyzer.src.tools.log_parser import log_parser
 
-SYSTEM_PROMPT = """You are a Bug Diagnoser Agent specialized in diagnosing production issues across multiple data sources.
+_DEFAULT_SYSTEM_PROMPT = """\
+You are a Bug Diagnoser Agent specialized in diagnosing production issues
+across multiple data sources.
 
 Your Capabilities:
 - Execute commands on remote servers via SSH (ssh_exec tool)
@@ -62,6 +71,9 @@ Rules:
 4. Prioritize fixes by urgency
 5. Handle tool failures gracefully - try alternative approaches"""
 
+_SCENARIO_DIR = Path(__file__).resolve().parent.parent.parent
+SYSTEM_PROMPT = load_scenario_prompt(_SCENARIO_DIR, default=_DEFAULT_SYSTEM_PROMPT)
+
 
 def create_bug_diagnoser_agent(
     model: str = "anthropic:claude-sonnet-4-6",
@@ -79,7 +91,11 @@ def create_bug_diagnoser_agent(
     config = AgentConfig(
         model=model,
         system_prompt=SYSTEM_PROMPT,
-        tools=[ssh_exec, ssh_read_log, cdp_connect, cdp_screenshot, cdp_console, cdp_network, code_search, log_parser],
+        tools=[
+            ssh_exec, ssh_read_log,
+            cdp_connect, cdp_screenshot, cdp_console, cdp_network,
+            code_search, log_parser,
+        ],
         debug=debug,
     )
     return create_agent(config)
@@ -110,7 +126,9 @@ def diagnose_bug(
 
     context_parts = [f"Bug description: {bug_description}"]
     if server_info:
-        context_parts.append(f"Server: {server_info.get('host', 'unknown')} (user: {server_info.get('user', 'unknown')})")
+        host = server_info.get("host", "unknown")
+        user = server_info.get("user", "unknown")
+        context_parts.append(f"Server: {host} (user: {user})")
     if browser_ws:
         context_parts.append(f"Browser CDP: {browser_ws}")
     if code_path:

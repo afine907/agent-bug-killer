@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import fnmatch
 import os
 from pathlib import Path
 
@@ -48,7 +47,10 @@ def code_search(
 
     ext_set: set[str] = set()
     if extensions:
-        ext_set = {e.strip() if e.strip().startswith(".") else f".{e.strip()}" for e in extensions.split(",")}
+        ext_set = {
+            e.strip() if e.strip().startswith(".") else f".{e.strip()}"
+            for e in extensions.split(",")
+        }
 
     results: list[dict[str, str | int]] = []
     search_lower = pattern.lower()

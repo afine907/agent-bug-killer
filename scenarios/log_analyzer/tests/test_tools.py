@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-import pytest
-
 from scenarios.log_analyzer.src.tools.file_reader import file_reader
 from scenarios.log_analyzer.src.tools.log_parser import log_parser
 

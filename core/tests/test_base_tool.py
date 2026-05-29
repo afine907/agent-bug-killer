@@ -1,6 +1,5 @@
 """Tests for core base_tool module."""
 
-import pytest
 from langchain_core.tools import StructuredTool
 
 from core.base_tool import create_tool, tool_metadata

@@ -1,6 +1,5 @@
 """Shared test fixtures for log-analyzer scenario."""
 
-import os
 from pathlib import Path
 
 import pytest
@@ -71,7 +70,8 @@ def empty_log() -> str:
 def mixed_exception_log() -> str:
     """Return a log with multiple different exception types."""
     return """2024-01-15 13:00:00,001 ERROR [api.client] API call failed
-requests.exceptions.Timeout: HTTPSConnectionPool(host='api.example.com', port=443): Read timed out. (read timeout=5)
+requests.exceptions.Timeout: HTTPSConnectionPool(host='api.example.com', port=443): Read timed out.
+(read timeout=5)
 
 2024-01-15 13:00:01,002 ERROR [auth.service] Authentication failed
 ValueError: Invalid token format: expected 3 parts, got 2

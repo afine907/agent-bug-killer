@@ -2,8 +2,6 @@
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from scenarios.bug_diagnoser.src.tools.ssh_tool import ssh_exec, ssh_read_log
 
 
