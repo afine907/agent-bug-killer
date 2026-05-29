@@ -38,6 +38,11 @@ async def cdp_connect(ws_url: str, timeout: int = 0) -> str:
     Returns:
         Session ID or error message.
     """
+    if not ws_url:
+        return "Error: ws_url cannot be empty"
+    if not ws_url.startswith(("ws://", "wss://")):
+        return "Error: ws_url must start with ws:// or wss://"
+
     if timeout <= 0:
         timeout = settings.cdp_timeout
 
@@ -52,6 +57,10 @@ async def cdp_connect(ws_url: str, timeout: int = 0) -> str:
         return await _connect()
     except ImportError:
         return "Error: websockets library not installed. Run: pip install websockets"
+    except TimeoutError:
+        return f"Connection to {ws_url} timed out after {timeout}s"
+    except ConnectionRefusedError:
+        return f"Connection refused: {ws_url}. Is Chrome running with --remote-debugging-port?"
     except Exception as e:
         return f"Error connecting to browser: {e}"
 
