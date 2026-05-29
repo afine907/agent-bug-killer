@@ -24,8 +24,9 @@ async def health() -> dict[str, str]:
 
 
 # Import routes after app creation to avoid circular imports
-from api.routes import bug_diagnoser, history, log_analyzer  # noqa: E402
+from api.routes import bug_diagnoser, history, knowledge, log_analyzer  # noqa: E402
 
 app.include_router(log_analyzer.router, prefix="/api/v1", tags=["log-analyzer"])
 app.include_router(bug_diagnoser.router, prefix="/api/v1", tags=["bug-diagnoser"])
 app.include_router(history.router, prefix="/api/v1", tags=["history"])
+app.include_router(knowledge.router, prefix="/api/v1", tags=["knowledge"])

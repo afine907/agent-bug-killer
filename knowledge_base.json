@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "entries": [
+    {
+      "id": "kb-001",
+      "title": "Database Connection Pool Exhaustion",
+      "error_pattern": "Pool exhausted|connection pool|too many connections",
+      "category": "database",
+      "root_cause": "Connection pool size is too small for the current load, or connections are not being released properly.",
+      "solution": "1. Increase pool size (e.g., from 5 to 20)\n2. Add connection timeout\n3. Ensure connections are returned to pool\n4. Add connection pool monitoring",
+      "tags": [
+        "database",
+        "connection",
+        "pool",
+        "performance"
+      ],
+      "occurrences": 0
+    },
+    {
+      "id": "kb-002",
+      "title": "Memory Leak in Long-Running Process",
+      "error_pattern": "OutOfMemory|OOM|memory leak|heap space",
+      "category": "resource",
+      "root_cause": "Objects are being created but not garbage collected, often due to circular references or caches without eviction.",
+      "solution": "1. Profile memory usage\n2. Check for circular references\n3. Implement cache eviction policies\n4. Increase memory limits if needed\n5. Restart services periodically as temporary fix",
+      "tags": [
+        "memory",
+        "leak",
+        "performance",
+        "java",
+        "python"
+      ],
+      "occurrences": 0
+    },
+    {
+      "id": "kb-003",
+      "title": "API Rate Limiting",
+      "error_pattern": "429|rate limit|too many requests|throttl",
+      "category": "api",
+      "root_cause": "Client is making too many requests within the rate limit window.",
+      "solution": "1. Implement exponential backoff\n2. Add request queuing\n3. Cache responses where possible\n4. Request rate limit increase from provider\n5. Use batch APIs if available",
+      "tags": [
+        "api",
+        "rate-limit",
+        "http",
+        "429"
+      ],
+      "occurrences": 0
+    },
+    {
+      "id": "kb-004",
+      "title": "SSL/TLS Certificate Issues",
+      "error_pattern": "SSL|certificate|CERT_|handshake|verify",
+      "category": "security",
+      "root_cause": "SSL certificate is expired, self-signed, or the certificate chain is incomplete.",
+      "solution": "1. Check certificate expiration date\n2. Verify certificate chain is complete\n3. Update CA certificates\n4. For self-signed certs, add to trusted store\n5. Use openssl s_client to debug",
+      "tags": [
+        "ssl",
+        "tls",
+        "certificate",
+        "security",
+        "https"
+      ],
+      "occurrences": 0
+    },
+    {
+      "id": "kb-005",
+      "title": "DNS Resolution Failure",
+      "error_pattern": "DNS|ENOTFOUND|name resolution|resolve.*host",
+      "category": "network",
+      "root_cause": "DNS server is unreachable, domain doesn't exist, or DNS cache is stale.",
+      "solution": "1. Check DNS server configuration\n2. Verify domain name is correct\n3. Flush DNS cache\n4. Try using IP address directly\n5. Check /etc/hosts or Windows hosts file",
+      "tags": [
+        "dns",
+        "network",
+        "domain",
+        "resolution"
+      ],
+      "occurrences": 0
+    }
+  ]
+}
