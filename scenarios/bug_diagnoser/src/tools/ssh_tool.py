@@ -33,6 +33,16 @@ def ssh_exec(
     Returns:
         Command output as a string, or error message.
     """
+    # Input validation
+    if not host:
+        return "Error: host cannot be empty"
+    if not user:
+        return "Error: user cannot be empty"
+    if not command:
+        return "Error: command cannot be empty"
+    if port < 1 or port > 65535:
+        return f"Error: invalid port {port}"
+
     if timeout <= 0:
         timeout = settings.ssh_timeout
 
@@ -61,6 +71,12 @@ def ssh_exec(
 
         return output
 
+    except paramiko.AuthenticationException:
+        return f"Authentication failed for {user}@{host}"
+    except paramiko.SSHException as e:
+        return f"SSH error: {e}"
+    except TimeoutError:
+        return f"Connection to {host}:{port} timed out after {timeout}s"
     except Exception as e:
         return f"Error connecting to {host}: {e}"
     finally:
