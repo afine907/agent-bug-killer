@@ -9,3 +9,4 @@
 | IMP-003 | 1 | ✅ done | Agent 从 markdown 文件加载 prompt 模板 | 补全基础 |
 | IMP-004 | 2 | ✅ done | 修复 README 目录名与实际不一致 | 补全基础 |
 | IMP-005 | 2 | ✅ done | 创建 core/memory.py 和 core/planner.py | 补全基础 |
+| IMP-006 | 3 | ✅ done | log_analyzer 集成测试 | 补全基础 |
