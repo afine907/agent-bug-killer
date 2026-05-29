@@ -72,3 +72,30 @@ class TestDiagnoseEndpoint:
         """Should return 422 when description missing."""
         response = client.post("/api/v1/diagnose", json={})
         assert response.status_code == 422
+
+
+class TestHistoryEndpoints:
+    """Tests for history endpoints."""
+
+    def test_list_history(self, client: TestClient) -> None:
+        """Should list history entries."""
+        response = client.get("/api/v1/history")
+        assert response.status_code == 200
+        data = response.json()
+        assert "total" in data
+        assert "entries" in data
+
+    def test_get_nonexistent_report(self, client: TestClient) -> None:
+        """Should return 404 for nonexistent report."""
+        response = client.get("/api/v1/history/nonexistent")
+        assert response.status_code == 404
+
+    def test_delete_nonexistent_report(self, client: TestClient) -> None:
+        """Should return 404 for nonexistent report."""
+        response = client.delete("/api/v1/history/nonexistent")
+        assert response.status_code == 404
+
+    def test_search_history(self, client: TestClient) -> None:
+        """Should search history."""
+        response = client.get("/api/v1/history/search/test")
+        assert response.status_code == 200
