@@ -30,3 +30,9 @@
 | IMP-024 | 41 | ✅ done | 根因分析模块 | 智能化 |
 | IMP-025 | 45 | ✅ done | 知识库 | 智能化 |
 | IMP-026 | 51 | ✅ done | 修复建议模块 | 智能化 |
+| IMP-027 | 61 | ✅ done | Docker 容器化 | 工程化 |
+| IMP-028 | 65 | ✅ done | API 中间件 | 工程化 |
+| IMP-029 | 69 | ✅ done | History API 路由 | 工程化 |
+| IMP-030 | 71 | ✅ done | History API 测试 | 工程化 |
+| IMP-031 | 81 | ✅ done | Knowledge API 路由 | 生态化 |
+| IMP-032 | 85 | ✅ done | 发布文档 | 生态化 |

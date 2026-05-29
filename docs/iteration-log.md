@@ -22,6 +22,53 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 81-90 — 生态化 (2026-05-29)
+
+### 审查
+- IMP-031: 缺少知识库 API (product, medium)
+- IMP-032: 缺少发布文档 (product, medium)
+
+### 实现
+- ✅ IMP-031: 创建 api/routes/knowledge.py
+  - 列表、搜索、详情端点
+- ✅ IMP-032: 添加发布文档
+  - CHANGELOG.md, SECURITY.md, LICENSE
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 162
+- Lint: ✅ All checks passed
+
+## Round 71-80 — 工程化 (2026-05-29)
+
+### 审查
+- IMP-030: API 测试不完整 (product, medium)
+
+### 实现
+- ✅ IMP-030: 添加 history 端点测试 (4 tests)
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 162 (+4)
+- Lint: ✅ All checks passed
+
+## Round 61-70 — 工程化 (2026-05-29)
+
+### 审查
+- IMP-027: 缺少 Docker 支持 (product, high)
+- IMP-028: 缺少 API 中间件 (product, medium)
+- IMP-029: 缺少 history API (product, medium)
+
+### 实现
+- ✅ IMP-027: 创建 Dockerfile + docker-compose.yml
+- ✅ IMP-028: 添加 logging + rate limit 中间件
+- ✅ IMP-029: 创建 history API 路由
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 158
+- Lint: ✅ All checks passed
+
 ## Round 51-56 — 智能化 (2026-05-29)
 
 ### 审查
