@@ -22,3 +22,20 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 2 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-004: README 目录名与实际不一致 (user, medium)
+- IMP-005: 缺少 core/memory.py 和 core/planner.py (product, medium)
+
+### 实现
+- ✅ IMP-004: 修正 README 中的目录名和命令路径
+- ✅ IMP-005: 创建 core/memory.py (MemoryMiddleware 封装) + core/planner.py (诊断规划助手)
+  - memory: 5 个测试, planner: 8 个测试
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 85 (+16)
+- 代码行数: +312 / -26 (7 files changed)
+- Lint: ✅ All checks passed
+
