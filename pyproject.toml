@@ -51,7 +51,7 @@ strict = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["scenarios/*/tests", "core/tests"]
+testpaths = ["scenarios/*/tests", "core/tests", "api/tests"]
 markers = [
     "unit: Unit tests (fast, no external dependencies)",
     "integration: Integration tests (may need external services)",
