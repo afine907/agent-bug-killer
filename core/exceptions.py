@@ -5,11 +5,13 @@ Provides structured exceptions with helpful error messages.
 
 from __future__ import annotations
 
+from typing import Any
+
 
 class AgentBugKillerError(Exception):
     """Base exception for Agent Bug Killer."""
 
-    def __init__(self, message: str, details: dict | None = None) -> None:
+    def __init__(self, message: str, details: dict[str, Any] | None = None) -> None:
         """Initialize exception.
 
         Args:

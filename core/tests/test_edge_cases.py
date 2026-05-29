@@ -51,7 +51,7 @@ class TestFormatterEdgeCases:
 
     def test_nested_empty(self) -> None:
         """Should handle nested empty structures."""
-        report = {"errors": [], "findings": []}
+        report: dict[str, list[dict[str, str]]] = {"errors": [], "findings": []}
         result = format_markdown(report)
         assert "0" in result
 
