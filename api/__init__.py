@@ -9,7 +9,7 @@ from api.middleware import RateLimitMiddleware, RequestLoggingMiddleware
 app = FastAPI(
     title="Agent Bug Killer API",
     description="AI-powered bug diagnosis API",
-    version="0.1.0",
+    version="0.2.0",
 )
 
 # Add middleware
@@ -20,7 +20,7 @@ app.add_middleware(RateLimitMiddleware, requests_per_minute=60)
 @app.get("/health")
 async def health() -> dict[str, str]:
     """Health check endpoint."""
-    return {"status": "ok", "version": "0.1.0"}
+    return {"status": "ok", "version": "0.2.0"}
 
 
 # Import routes after app creation to avoid circular imports

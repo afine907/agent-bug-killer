@@ -1,6 +1,6 @@
 [project]
 name = "agent-bug-killer"
-version = "0.1.0"
+version = "0.2.0"
 description = "通过构建线上 Bug 诊断 Agent，系统性掌握 AI Agent 开发全流程"
 readme = "README.md"
 requires-python = ">=3.12"

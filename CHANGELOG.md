@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.0] - 2024-01-20
 
 ### Added
 - FastAPI web API with health, log analysis, diagnosis, and history endpoints
@@ -18,11 +18,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API middleware (logging, rate limiting)
 - GitHub Actions CI/CD
 - Comprehensive documentation (ADRs, learnings, contributing guide)
+- Retry logic with exponential backoff
+- Input validation utilities
+- Progress tracking utilities
+- Custom exception hierarchy
+- Caching utilities
+- CLI tests (100% coverage)
+- Type-safe code (0 mypy errors)
 
 ### Changed
 - Improved settings with validation and documentation
 - Enhanced CLI with --format option
 - Fixed README project structure
+- Improved SSH tool error handling
+- Improved CDP tool error handling
+- Version bump to 0.2.0
 
 ## [0.1.0] - 2024-01-15
 
