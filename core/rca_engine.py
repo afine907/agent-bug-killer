@@ -75,11 +75,11 @@ class RCAEngine:
 
         # Step 4: Determine dominant category
         dominant_category = (
-            max(category_counts, key=category_counts.get)
+            max(category_counts, key=lambda k: category_counts[k])
             if category_counts else "unknown"
         )
         dominant_severity = (
-            max(severity_counts, key=severity_counts.get)
+            max(severity_counts, key=lambda k: severity_counts[k])
             if severity_counts else "low"
         )
 
@@ -169,7 +169,7 @@ class RCAEngine:
                 type_counts[analysis.error_type] = type_counts.get(analysis.error_type, 0) + 1
 
             if type_counts:
-                common_type = max(type_counts, key=type_counts.get)
+                common_type = max(type_counts, key=lambda k: type_counts[k])
                 return f"Multiple {common_type} errors detected in {category} category"
 
         return f"Unknown root cause in {category} category"
