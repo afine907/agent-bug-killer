@@ -11,3 +11,7 @@
 | IMP-005 | 2 | ✅ done | 创建 core/memory.py 和 core/planner.py | 补全基础 |
 | IMP-006 | 3 | ✅ done | log_analyzer 集成测试 | 补全基础 |
 | IMP-007 | 4 | ✅ done | bug_diagnoser 集成测试 | 补全基础 |
+| IMP-008 | 5 | ✅ done | ADR 文档 | 补全基础 |
+| IMP-009 | 5 | ✅ done | learnings 文档 | 补全基础 |
+| IMP-010 | 6 | ✅ done | 场景 README 文件 | 补全基础 |
+| IMP-011 | 7 | ✅ done | 改进 .env.example | 补全基础 |

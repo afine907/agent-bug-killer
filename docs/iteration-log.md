@@ -22,6 +22,25 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 5-8 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-008: 缺少 ADR 文档 (product, medium)
+- IMP-009: 缺少 learnings 文档 (product, medium)
+- IMP-010: 场景缺少 README (user, medium)
+- IMP-011: .env.example 文档不完善 (user, low)
+
+### 实现
+- ✅ IMP-008: 创建 docs/decisions/ (ADR 模板 + 2 个 ADR)
+- ✅ IMP-009: 创建 docs/learnings/ (agent 开发经验)
+- ✅ IMP-010: 两个场景的 README 文件
+- ✅ IMP-011: 改进 .env.example (分组、注释、默认值)
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
 ## Round 4 — 补全基础 (2026-05-29)
 
 ### 审查
