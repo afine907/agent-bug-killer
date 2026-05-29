@@ -22,6 +22,82 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 31-33 — 产品化 (2026-05-29)
+
+### 审查
+- IMP-023: CLI 缺少输出格式支持 (user, medium)
+
+### 实现
+- ✅ IMP-023: log_analyzer CLI 添加 --format 选项
+  - 支持 json, markdown, html 格式
+  - 使用 core/formatters.py
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 126
+- Lint: ✅ All checks passed
+
+## Round 28-30 — 产品化 (2026-05-29)
+
+### 审查
+- IMP-022: API 缺少测试 (product, medium)
+
+### 实现
+- ✅ IMP-022: 创建 api/tests/test_api.py (7 tests)
+  - Health, analyze-log, diagnose 端点测试
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 126 (+6)
+- Lint: ✅ All checks passed
+
+## Round 25-27 — 产品化 (2026-05-29)
+
+### 审查
+- IMP-021: 缺少诊断历史存储 (product, high)
+
+### 实现
+- ✅ IMP-021: 创建 core/history.py
+  - DiagnosticHistory 类，文件存储
+  - save/load/list/delete/search 操作
+  - 10 个单元测试
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 120 (+9)
+- Lint: ✅ All checks passed
+
+## Round 22-24 — 产品化 (2026-05-29)
+
+### 审查
+- IMP-020: 缺少多格式输出 (user, high)
+
+### 实现
+- ✅ IMP-020: 创建 core/formatters.py
+  - format_json/format_markdown/format_html/format_report
+  - 15 个单元测试
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 111 (+15)
+- Lint: ✅ All checks passed
+
+## Round 21 — 产品化 (2026-05-29)
+
+### 审查
+- IMP-019: 缺少 Web API (product, high)
+
+### 实现
+- ✅ IMP-019: 创建 FastAPI web API
+  - api/__init__.py: FastAPI app + health endpoint
+  - api/routes/log_analyzer.py: POST /api/v1/analyze-log
+  - api/routes/bug_diagnoser.py: POST /api/v1/diagnose (placeholder)
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
 ## Round 17-20 — 补全基础 (2026-05-29)
 
 ### 审查

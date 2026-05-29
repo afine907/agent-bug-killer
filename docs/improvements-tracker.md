@@ -22,3 +22,8 @@
 | IMP-016 | 17 | ✅ done | GitHub issue 模板 | 补全基础 |
 | IMP-017 | 17 | ✅ done | PR 模板 | 补全基础 |
 | IMP-018 | 17 | ✅ done | CONTRIBUTING.md | 补全基础 |
+| IMP-019 | 21 | ✅ done | FastAPI web API | 产品化 |
+| IMP-020 | 22 | ✅ done | 多格式输出 formatters | 产品化 |
+| IMP-021 | 25 | ✅ done | 诊断历史存储 | 产品化 |
+| IMP-022 | 28 | ✅ done | API 端点测试 | 产品化 |
+| IMP-023 | 31 | ✅ done | CLI 输出格式支持 | 产品化 |
