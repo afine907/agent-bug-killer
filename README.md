@@ -35,8 +35,7 @@ agent-bug-killer/
 │   ├── memory.py                 # 记忆系统封装
 │   └── planner.py                # 规划引擎封装
 ├── scenarios/                    # Agent 场景（每个场景独立）
-│   ├── log-analyzer/             # 场景1: 日志分析器
-│   │   ├── README.md
+│   ├── log_analyzer/             # 场景1: 日志分析器
 │   │   ├── src/
 │   │   │   ├── __init__.py
 │   │   │   ├── agent.py          # LogAnalyzerAgent
@@ -48,16 +47,13 @@ agent-bug-killer/
 │   │   │       ├── system.md
 │   │   │       └── diagnose.md
 │   │   ├── cli.py                # 命令行入口
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   ├── conftest.py       # 测试 fixtures
-│   │   │   ├── test_agent.py
-│   │   │   ├── test_tools.py
-│   │   │   └── test_integration.py
-│   │   └── requirements.txt
+│   │   └── tests/
+│   │       ├── __init__.py
+│   │       ├── conftest.py       # 测试 fixtures
+│   │       ├── test_agent.py
+│   │       └── test_tools.py
 │   │
-│   ├── bug-diagnoser/            # 场景2: 线上Bug诊断器
-│   │   ├── README.md
+│   ├── bug_diagnoser/            # 场景2: 线上Bug诊断器
 │   │   ├── src/
 │   │   │   ├── __init__.py
 │   │   │   ├── agent.py          # BugDiagnoserAgent
@@ -65,25 +61,19 @@ agent-bug-killer/
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── ssh_tool.py
 │   │   │   │   ├── cdp_tool.py
-│   │   │   │   ├── log_parser.py
 │   │   │   │   └── code_search.py
 │   │   │   └── prompts/
-│   │   │       ├── system.md
-│   │   │       ├── diagnose.md
-│   │   │       └── report.md
+│   │   │       └── system.md
 │   │   ├── cli.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   ├── conftest.py
-│   │   │   ├── test_agent.py
-│   │   │   ├── test_ssh_tool.py
-│   │   │   ├── test_cdp_tool.py
-│   │   │   ├── test_integration.py
-│   │   │   └── test_e2e.py
-│   │   └── requirements.txt
+│   │   └── tests/
+│   │       ├── __init__.py
+│   │       ├── conftest.py
+│   │       ├── test_agent.py
+│   │       ├── test_ssh_tools.py
+│   │       ├── test_cdp_tools.py
+│   │       └── test_code_search.py
 │   │
 │   └── scenario-3/               # 场景3: TBD
-│       └── README.md
 │
 ├── docs/                         # 开发笔记和设计文档
 │   ├── decisions/                # 技术决策记录 (ADR)
@@ -116,5 +106,8 @@ uv sync
 uv run pytest
 
 # 运行场景1
-uv run python scenarios/log-analyzer/cli.py --file /path/to/error.log
+uv run python scenarios/log_analyzer/cli.py --file /path/to/error.log
+
+# 运行场景2
+uv run python scenarios/bug_diagnoser/cli.py --bug "描述问题" --host server --user deploy
 ```
