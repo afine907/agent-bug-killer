@@ -22,6 +22,38 @@
 - 代码行数: +721 / -42 (26 files changed)
 - Lint: ✅ All checks passed
 
+## Round 11-14 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-013: bug_diagnoser 缺少 diagnose.md prompt (product, medium)
+- IMP-014: 缺少测试样本数据 (product, low)
+
+### 实现
+- ✅ IMP-013: 创建 bug_diagnoser/src/prompts/diagnose.md
+- ✅ IMP-014: 添加 server_error.log 和 frontend_error.log 样本
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
+## Round 9-10 — 补全基础 (2026-05-29)
+
+### 审查
+- IMP-012: settings.py 缺少验证和文档 (product, medium)
+
+### 实现
+- ✅ IMP-012: 增强 core/settings.py
+  - 添加 Field 描述
+  - 添加数值验证 (ge/le)
+  - 添加 SSH 配置项
+  - 添加截图目录自动创建
+
+### 指标
+- 测试通过: ✅
+- 测试数量: 96
+- Lint: ✅ All checks passed
+
 ## Round 5-8 — 补全基础 (2026-05-29)
 
 ### 审查
