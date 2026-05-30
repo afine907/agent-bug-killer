@@ -89,28 +89,32 @@
 - Code association
 - We can automatically create issues
 
-## Our Differentiation
+## Our Approach
 
-### Core Differentiator: AI-First Diagnostics
+We're building an AI-powered diagnosis tool, not a monitoring platform. Our focus is different from established tools:
 
-| Feature          | Us | Sentry | Datadog     | LangSmith |
-|------------------|----|--------|-------------|-----------|
-| AI Root Cause Analysis | Yes | No | Partial | No |
-| Multi-source Correlation | Yes | No | Yes | No |
-| Fix Suggestions | Yes | No | No | No |
-| Knowledge Base | Yes | No | No | No |
-| Open Source | Yes | Yes | No | No |
-| Agent Framework | Yes | No | No | No |
-| Local Deployment | Yes | Yes | No | No |
+| Feature | Our Focus | Notes |
+|---------|-----------|-------|
+| AI Root Cause Analysis | Core feature | Pattern matching + knowledge base |
+| Multi-source Correlation | Core feature | SSH, CDP, logs, source code |
+| Fix Suggestions | Experimental | Basic suggestions, needs improvement |
+| Knowledge Base | In progress | Growing error pattern library |
+| Open Source | Yes | MIT licensed |
+| Agent Framework | Yes | Built on LangChain DeepAgents |
 
-### Our Unique Value
+### What We're Good At
 
-1. **AI-First**: Not post-hoc analysis, but real-time diagnostics
-2. **Multi-source Correlation**: SSH + CDP + Code + Logs
-3. **Fix Suggestions**: Not only tells you what's broken, but also how to fix it
-4. **Knowledge Base**: Learns from historical issues, gets smarter with use
-5. **Agent Framework**: Extensible diagnostic agents
-6. **Fully Open Source**: No vendor lock-in
+1. **AI-Assisted Diagnosis**: Using LLMs to analyze errors and suggest root causes
+2. **Multi-source Data**: Collecting clues from servers, browsers, and code simultaneously
+3. **Extensible Agents**: Easy to add new tools and diagnostic scenarios
+4. **Open Source**: Self-hosted, no vendor lock-in
+
+### What We Need to Improve
+
+1. Error grouping is basic compared to Sentry's mature implementation
+2. No distributed tracing yet
+3. Knowledge base is small — needs community contributions
+4. Dashboard and visualization not yet built
 
 ## Target Users
 
@@ -125,46 +129,34 @@
 
 ## Market Positioning
 
-```
-General-purpose Monitoring (Datadog, Grafana)
-    ↑
-    |  We are here: AI Diagnostics Layer
-    ↓
-Domain-specific Tools (Sentry, LangSmith)
-```
+We're a small, focused tool for AI-assisted bug diagnosis. We don't compete with Sentry or Datadog — they're mature platforms with thousands of engineers. Instead, we fill a niche:
 
-**Positioning Statement:**
-"AI-Powered Bug Diagnosis Agent -- Not just monitoring, but diagnosis"
+- **Not a monitoring platform** — we don't collect metrics or traces at scale
+- **Not an error aggregator** — we don't replace Sentry's error tracking
+- **A diagnosis assistant** — given a bug, help figure out why and how to fix it
 
-## Differentiation Strategy
+## Roadmap
 
 ### Short-term (3 months)
-1. Smarter than Sentry (AI root cause analysis)
-2. Cheaper than Datadog (open source and free)
-3. More versatile than LangSmith (not limited to LLMs)
+1. Improve RCA accuracy with more error patterns
+2. Grow the knowledge base with real-world cases
+3. Better fix suggestions with code examples
 
 ### Mid-term (6 months)
-1. Build a knowledge base ecosystem
-2. Community-contributed error patterns
-3. Plugin marketplace
+1. Community-contributed error patterns
+2. Plugin system for custom tools
+3. Basic dashboard for diagnostic history
 
 ### Long-term (12 months)
-1. Become the standard for AI diagnostics
-2. Enterprise-grade features
-3. Cloud service options
-
-## Technical Moats
-
-1. **Error Pattern Library**: Community-contributed error knowledge
-2. **Diagnostic Accuracy**: Continuously optimized AI models
-3. **Integration Ecosystem**: Broad tool integrations
-4. **Community Network Effect**: More users lead to greater accuracy
+1. Integration with CI/CD pipelines
+2. Team collaboration features
+3. Enterprise-friendly deployment options
 
 ## Next Steps
 
 1. [x] Complete competitor analysis
-2. [ ] Implement error grouping (learn from Sentry)
-3. [ ] Implement distributed tracing (learn from Datadog)
-4. [ ] Implement LLM tracing (learn from LangSmith)
-5. [ ] Implement dashboard (learn from Grafana)
-6. [ ] Build the community
+2. [x] Implement basic error grouping
+3. [ ] Improve RCA accuracy with more patterns
+4. [ ] Add knowledge base contributions from community
+5. [ ] Build basic diagnostic dashboard
+6. [ ] Grow the community
