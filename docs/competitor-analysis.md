@@ -1,170 +1,162 @@
-# 竞品分析 — Agent Bug Killer 定位
+# Competitor Analysis -- Agent Bug Killer Positioning
 
-## 直接竞品
+## Direct Competitors
 
 ### 1. Sentry
-**优势：**
-- 成熟的错误监控平台
-- 广泛的语言/框架支持
-- 强大的错误分组和聚合
-- 性能监控
-- 开源 (self-hosted 可选)
+**Strengths:**
+- Mature error monitoring platform
+- Broad language/framework support
+- Strong error grouping and aggregation
+- Performance monitoring
+- Open source (self-hosted available)
 
-**劣势：**
-- 主要是错误收集，不是诊断
-- 没有 AI 驱动的根因分析
-- 配置复杂
-- 价格昂贵（SaaS）
+**Weaknesses:**
+- Primarily error collection, not diagnosis
+- No AI-driven root cause analysis
+- Complex configuration
+- Expensive (SaaS)
 
-**我们能学的：**
-- 错误分组和聚合
-- Source Map 支持
+**What we can learn:**
+- Error grouping and aggregation
+- Source Map support
 - Release tracking
 - Breadcrumb trail
 
 ### 2. Datadog
-**优势：**
-- 全栈可观测性（APM, Logs, Metrics）
-- 强大的关联分析
-- ML 驱动的异常检测
-- 丰富的集成
+**Strengths:**
+- Full-stack observability (APM, Logs, Metrics)
+- Strong correlated analysis
+- ML-driven anomaly detection
+- Rich integrations
 
-**劣势：**
-- 极其昂贵
-- 学习曲线陡峭
-- 闭源
-- 资源消耗大
+**Weaknesses:**
+- Extremely expensive
+- Steep learning curve
+- Closed source
+- High resource consumption
 
-**我们能学的：**
-- 分布式追踪
-- Log-Metric-Trace 关联
-- Dashboard 可视化
+**What we can learn:**
+- Distributed tracing
+- Log-Metric-Trace correlation
+- Dashboard visualization
 
 ### 3. LangSmith
-**优势：**
-- LLM 应用专用监控
-- Trace 可视化
-- 评估和测试框架
-- LangChain 生态集成
+**Strengths:**
+- Purpose-built monitoring for LLM applications
+- Trace visualization
+- Evaluation and testing framework
+- LangChain ecosystem integration
 
-**劣势：**
-- 只针对 LLM 应用
-- 不是通用 Bug 诊断
-- 闭源 SaaS
+**Weaknesses:**
+- Only for LLM applications
+- Not a general-purpose bug diagnostic tool
+- Closed source SaaS
 
-**我们能学的：**
-- LLM Trace 可视化
-- 评估框架
-- Prompt 调试
+**What we can learn:**
+- LLM trace visualization
+- Evaluation framework
+- Prompt debugging
 
 ### 4. Grafana + Loki
-**优势：**
-- 开源
-- 强大的日志查询
-- 可视化优秀
-- 社区活跃
+**Strengths:**
+- Open source
+- Powerful log querying
+- Excellent visualization
+- Active community
 
-**劣势：**
-- 需要自己搭建
-- 没有 AI 诊断
-- 配置复杂
+**Weaknesses:**
+- Requires self-hosting
+- No AI diagnostics
+- Complex configuration
 
-**我们能学的：**
-- PromQL 查询语言
-- Dashboard 设计
-- 告警规则
+**What we can learn:**
+- PromQL query language
+- Dashboard design
+- Alerting rules
 
-## 间接竞品
+## Indirect Competitors
 
 ### 5. PagerDuty
-- 事件管理
-- 升级策略
-- 我们可以集成
+- Incident management
+- Escalation strategies
+- We can integrate with it
 
 ### 6. Jira/Linear
 - Issue tracking
-- 我们可以双向同步
+- We can bidirectionally sync
 
 ### 7. GitHub Issues
-- 代码关联
-- 我们可以自动创建 Issue
+- Code association
+- We can automatically create issues
 
-## 我们的差异化
+## Our Approach
 
-### 核心差异：AI-First 诊断
+We're building an AI-powered diagnosis tool, not a monitoring platform. Our focus is different from established tools:
 
-| 特性 | 我们 | Sentry | Datadog | LangSmith |
-|------|------|--------|---------|-----------|
-| AI 根因分析 | ✅ | ❌ | 部分 | ❌ |
-| 多源关联 | ✅ | ❌ | ✅ | ❌ |
-| 修复建议 | ✅ | ❌ | ❌ | ❌ |
-| 知识库 | ✅ | ❌ | ❌ | ❌ |
-| 开源 | ✅ | ✅ | ❌ | ❌ |
-| Agent 框架 | ✅ | ❌ | ❌ | ❌ |
-| 本地部署 | ✅ | ✅ | ❌ | ❌ |
+| Feature | Our Focus | Notes |
+|---------|-----------|-------|
+| AI Root Cause Analysis | Core feature | Pattern matching + knowledge base |
+| Multi-source Correlation | Core feature | SSH, CDP, logs, source code |
+| Fix Suggestions | Experimental | Basic suggestions, needs improvement |
+| Knowledge Base | In progress | Growing error pattern library |
+| Open Source | Yes | MIT licensed |
+| Agent Framework | Yes | Built on LangChain DeepAgents |
 
-### 我们的独特价值
+### What We're Good At
 
-1. **AI-First**: 不是事后分析，是实时诊断
-2. **多源关联**: SSH + CDP + Code + Logs
-3. **修复建议**: 不只告诉你什么坏了，还告诉你怎么修
-4. **知识库**: 学习历史问题，越用越聪明
-5. **Agent 框架**: 可扩展的诊断 Agent
-6. **完全开源**: 无 vendor lock-in
+1. **AI-Assisted Diagnosis**: Using LLMs to analyze errors and suggest root causes
+2. **Multi-source Data**: Collecting clues from servers, browsers, and code simultaneously
+3. **Extensible Agents**: Easy to add new tools and diagnostic scenarios
+4. **Open Source**: Self-hosted, no vendor lock-in
 
-## 目标用户
+### What We Need to Improve
 
-### 主要用户
-1. **后端开发者**: 线上 Bug 诊断
-2. **SRE/DevOps**: 系统故障排查
-3. **全栈开发者**: 前后端联调问题
+1. Error grouping is basic compared to Sentry's mature implementation
+2. No distributed tracing yet
+3. Knowledge base is small — needs community contributions
+4. Dashboard and visualization not yet built
 
-### 次要用户
-1. **技术负责人**: 了解系统健康度
-2. **QA 工具开发者**: 集成到测试流程
+## Target Users
 
-## 市场定位
+### Primary Users
+1. **Backend Developers**: Production bug diagnosis
+2. **SRE/DevOps**: System failure troubleshooting
+3. **Full-stack Developers**: Front-end/back-end integration issues
 
-```
-通用监控 (Datadog, Grafana)
-    ↑
-    |  我们在这里：AI 诊断层
-    ↓
-特定领域 (Sentry, LangSmith)
-```
+### Secondary Users
+1. **Tech Leads**: Understanding system health
+2. **QA Tool Developers**: Integration into testing workflows
 
-**定位语：**
-"AI-Powered Bug Diagnosis Agent — 不只监控，更要诊断"
+## Market Positioning
 
-## 差异化策略
+We're a small, focused tool for AI-assisted bug diagnosis. We don't compete with Sentry or Datadog — they're mature platforms with thousands of engineers. Instead, we fill a niche:
 
-### 短期 (3个月)
-1. 比 Sentry 更智能（AI 根因分析）
-2. 比 Datadog 更便宜（开源免费）
-3. 比 LangSmith 更通用（不限 LLM）
+- **Not a monitoring platform** — we don't collect metrics or traces at scale
+- **Not an error aggregator** — we don't replace Sentry's error tracking
+- **A diagnosis assistant** — given a bug, help figure out why and how to fix it
 
-### 中期 (6个月)
-1. 建立知识库生态
-2. 社区贡献错误模式
-3. 插件市场
+## Roadmap
 
-### 长期 (12个月)
-1. 成为 AI 诊断标准
-2. 企业级功能
-3. 云服务选项
+### Short-term (3 months)
+1. Improve RCA accuracy with more error patterns
+2. Grow the knowledge base with real-world cases
+3. Better fix suggestions with code examples
 
-## 技术壁垒
+### Mid-term (6 months)
+1. Community-contributed error patterns
+2. Plugin system for custom tools
+3. Basic dashboard for diagnostic history
 
-1. **错误模式库**: 社区贡献的错误知识
-2. **诊断准确率**: 持续优化的 AI 模型
-3. **集成生态**: 广泛的工具集成
-4. **社区网络效应**: 越多人用越准确
+### Long-term (12 months)
+1. Integration with CI/CD pipelines
+2. Team collaboration features
+3. Enterprise-friendly deployment options
 
-## 下一步行动
+## Next Steps
 
-1. ✅ 完成竞品分析
-2. ⬜ 实现错误分组（学 Sentry）
-3. ⬜ 实现分布式追踪（学 Datadog）
-4. ⬜ 实现 LLM Trace（学 LangSmith）
-5. ⬜ 实现 Dashboard（学 Grafana）
-6. ⬜ 建立社区
+1. [x] Complete competitor analysis
+2. [x] Implement basic error grouping
+3. [ ] Improve RCA accuracy with more patterns
+4. [ ] Add knowledge base contributions from community
+5. [ ] Build basic diagnostic dashboard
+6. [ ] Grow the community

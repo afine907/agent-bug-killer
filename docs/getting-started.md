@@ -240,7 +240,7 @@ Error: Connection refused
 
 ## Next Steps
 
-1. Read the [Architecture Guide](./architecture-v2.md)
+1. Read the [Architecture Guide](./architecture.md)
 2. Explore the [API Reference](./api-reference.md)
 3. Check the [Competitor Analysis](./competitor-analysis.md)
 4. Review the [Roadmap](./roadmap-v2.md)

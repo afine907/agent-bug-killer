@@ -1,234 +1,281 @@
 # Agent Bug Killer
 
-> AI-Powered Bug Diagnosis Agent — 不只监控，更要诊断
+> AI-Powered Bug Diagnosis System — 不只监控，更要诊断
 
 [![CI](https://github.com/afine907/agent-bug-killer/actions/workflows/ci.yml/badge.svg)](https://github.com/afine907/agent-bug-killer/actions)
 [![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)](https://github.com/afine907/agent-bug-killer)
 [![Python](https://img.shields.io/badge/python-3.12+-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![mypy](https://img.shields.io/badge/mypy-strict-blue)](https://mypy-lang.org/)
 
-## 项目定位
+Agent Bug Killer is an AI-driven bug diagnosis system that helps developers quickly identify and fix production issues. It combines multiple data sources (logs, servers, browsers, source code) with intelligent root cause analysis to deliver actionable diagnostic reports.
 
-这不是一个学习项目，而是一个**产品项目**。
+---
 
-Agent Bug Killer 是一个 AI 驱动的 Bug 诊断系统，帮助开发者更快地识别和修复线上问题。
-它使用多数据源（日志、服务器、浏览器、代码）提供智能诊断。
+## Features
 
-## 核心特性
+### 🤖 Intelligent Diagnosis
+- **Root Cause Analysis (RCA)** — Pattern-matching engine with 7 built-in error categories
+- **Advanced RCA Engine** — Multi-technique analysis with confidence scoring and evidence collection
+- **Error Grouping** — Sentry-inspired error fingerprinting and aggregation
+- **Knowledge Base** — Learn from past bugs, match known patterns
+- **Fix Suggestions** — Actionable repair recommendations with code examples
 
-### 🤖 AI 驱动诊断
-- 自动根因分析（RCA）
-- 多源数据关联
-- 智能修复建议
-- 知识库学习
+### 🔧 Multi-Source Data Collection
+- **SSH** — Remote server command execution and log retrieval
+- **CDP** — Chrome DevTools Protocol for browser debugging
+- **Log Parser** — Regex + LLM hybrid log analysis
+- **Code Search** — Source code pattern matching
 
-### 🔧 多源数据采集
-- SSH 远程命令执行
-- CDP 浏览器调试
-- 日志文件分析
-- 源代码搜索
+### 📊 Production Ready
+- **RESTful API** — FastAPI with 12 endpoints
+- **Metrics** — Counter, Gauge, Histogram with labels (Datadog-style)
+- **Docker** — Containerized deployment
+- **CI/CD** — GitHub Actions pipeline
+- **Type Safe** — Strict mypy, 0 errors
+- **Well Tested** — 284 tests, 92% coverage
 
-### 📊 结构化输出
-- JSON 格式报告
-- Markdown 格式报告
-- HTML 格式报告
-- 诊断历史记录
+### 📝 Flexible Output
+- JSON, Markdown, and HTML report formats
+- Diagnostic history with search
+- CLI and API interfaces
 
-### 🚀 生产就绪
-- FastAPI Web API
-- Docker 容器化
-- GitHub Actions CI/CD
-- 完整测试覆盖
+---
 
-## 技术栈
+## Quick Start
 
-| 层级 | 选型 | 理由 |
-|------|------|------|
-| **框架** | LangChain DeepAgents | 官方框架，开箱即用的 planning、memory、sub-agent |
-| **LLM** | Claude API (via LangChain) | Tool Use 原生支持，中文能力强 |
-| **运行时** | LangGraph | DeepAgents 底层，提供状态管理和持久化 |
-| **语言** | Python 3.12+ | AI 生态最完整 |
-| **包管理** | uv | 现代、快速，DeepAgents 官方推荐 |
-| **测试** | pytest + pytest-asyncio | Python 标准测试框架 |
-| **部署** | Docker | 标准化部署 |
+### Prerequisites
 
-## 快速开始
+- Python 3.12+
+- [uv](https://docs.astral.sh/uv/) (recommended) or pip
 
-### 安装
+### Installation
 
 ```bash
-# 安装 uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# 克隆项目
+# Clone the repository
 git clone https://github.com/afine907/agent-bug-killer.git
 cd agent-bug-killer
 
-# 安装依赖
+# Install with uv (recommended)
 uv sync
 
-# 配置环境
+# Or with pip
+pip install -e ".[dev]"
+
+# Configure environment
 cp .env.example .env
-# 编辑 .env 填入 API 密钥
+# Edit .env and add your ANTHROPIC_API_KEY
 ```
 
-### 使用 CLI
+### CLI Usage
 
 ```bash
-# 分析日志文件
+# Analyze a log file
 uv run python scenarios/log_analyzer/cli.py --file /path/to/error.log
 
-# 诊断 Bug
+# Diagnose a bug
 uv run python scenarios/bug_diagnoser/cli.py \
-  --bug "页面白屏" \
+  --bug "Page shows blank screen" \
   --host prod-server \
   --user deploy
 
-# 输出 Markdown 报告
+# Output as Markdown
 uv run python scenarios/log_analyzer/cli.py \
   --file error.log \
   --output report.md \
   --format markdown
 ```
 
-### 使用 API
+### API Usage
 
 ```bash
-# 启动 API 服务
+# Start the API server
 uv run uvicorn api:app --reload
 
-# 访问 API 文档
+# Access interactive docs
 open http://localhost:8000/docs
 ```
 
-### 使用 Python
+### Python SDK
 
 ```python
 from scenarios.log_analyzer.src.agent import analyze_log
 from scenarios.bug_diagnoser.src.agent import diagnose_bug
 
-# 分析日志
+# Analyze logs
 result = analyze_log("/path/to/error.log")
 
-# 诊断 Bug
+# Diagnose a bug
 result = diagnose_bug(
-    bug_description="页面白屏",
+    bug_description="Page shows blank screen",
     server_info={"host": "prod-server", "user": "deploy"},
 )
 ```
 
-## 核心模块
+---
 
-| 模块 | 功能 | 测试 |
-|------|------|------|
-| base_agent.py | Agent 工厂 | ✅ |
-| base_tool.py | Tool 工具 | ✅ |
-| settings.py | 配置管理 | ✅ |
-| prompt_loader.py | Prompt 加载 | ✅ |
-| memory.py | 记忆系统 | ✅ |
-| planner.py | 规划助手 | ✅ |
-| formatters.py | 输出格式 | ✅ |
-| history.py | 诊断历史 | ✅ |
-| analyzer.py | 根因分析 | ✅ |
-| knowledge_base.py | 知识库 | ✅ |
-| fix_suggestions.py | 修复建议 | ✅ |
-| error_groups.py | 错误分组 | ✅ |
-| rca_engine.py | RCA 引擎 | ✅ |
-| metrics.py | 指标收集 | ✅ |
-| retry.py | 重试逻辑 | ✅ |
-| validators.py | 输入验证 | ✅ |
-| progress.py | 进度跟踪 | ✅ |
-| exceptions.py | 自定义异常 | ✅ |
-| cache.py | 缓存工具 | ✅ |
+## Architecture
 
-## 测试
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     User Interfaces                          │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────────────┐  │
+│  │   CLI    │  │  Python  │  │    REST API (FastAPI)     │  │
+│  │          │  │   SDK    │  │  /api/v1/analyze-log      │  │
+│  │          │  │          │  │  /api/v1/diagnose         │  │
+│  │          │  │          │  │  /api/v1/history          │  │
+│  │          │  │          │  │  /api/v1/knowledge        │  │
+│  └────┬─────┘  └────┬─────┘  └────────────┬─────────────┘  │
+├───────┼──────────────┼─────────────────────┼────────────────┤
+│       │     Agent Layer                    │                │
+│  ┌────▼──────────────▼─────────────────────▼─────────────┐  │
+│  │  LogAnalyzerAgent    BugDiagnoserAgent                 │  │
+│  │  (LangChain DeepAgents)                               │  │
+│  └────┬──────────────────────┬───────────────────────────┘  │
+├───────┼──────────────────────┼──────────────────────────────┤
+│       │  Core Engine         │  Tools                        │
+│  ┌────▼────────────┐   ┌────▼────────────────────────────┐  │
+│  │  RCA Engine     │   │  file_reader    log_parser       │  │
+│  │  Error Groups   │   │  ssh_exec       cdp_*            │  │
+│  │  Analyzer       │   │  code_search                    │  │
+│  │  Knowledge Base │   └─────────────────────────────────┘  │
+│  │  Fix Suggestions│                                        │
+│  │  Metrics        │   ┌─────────────────────────────────┐  │
+│  └─────────────────┘   │  Infrastructure                  │  │
+│                        │  Settings  History  Cache         │  │
+│                        │  Retry  Validators  Progress      │  │
+│                        └─────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+For detailed architecture with data flows and component diagrams, see [docs/architecture.md](docs/architecture.md).
+
+---
+
+## Project Structure
+
+```
+agent-bug-killer/
+├── core/                          # Core framework (19 modules)
+│   ├── base_agent.py              # Agent factory (LangChain DeepAgents)
+│   ├── base_tool.py               # Tool creation utilities
+│   ├── settings.py                # Configuration (pydantic-settings)
+│   ├── analyzer.py                # Error pattern matching (7 patterns)
+│   ├── rca_engine.py              # Advanced RCA with confidence scoring
+│   ├── error_groups.py            # Error fingerprinting & aggregation
+│   ├── knowledge_base.py          # Known issues database
+│   ├── fix_suggestions.py         # Actionable repair recommendations
+│   ├── metrics.py                 # Counter/Gauge/Histogram collection
+│   ├── formatters.py              # JSON/Markdown/HTML output
+│   ├── history.py                 # Diagnostic report storage
+│   ├── prompt_loader.py           # Dynamic prompt loading
+│   ├── memory.py                  # Memory system wrapper
+│   ├── planner.py                 # Diagnostic workflow planning
+│   ├── cache.py                   # File-based caching
+│   ├── retry.py                   # Retry with exponential backoff
+│   ├── validators.py              # Input validation
+│   ├── progress.py                # Progress tracking
+│   └── exceptions.py              # Structured exception hierarchy
+├── scenarios/                     # Agent scenarios
+│   ├── log_analyzer/              # Log file analysis
+│   └── bug_diagnoser/             # Multi-source bug diagnosis
+├── api/                           # FastAPI web API
+│   ├── __init__.py                # App factory + middleware
+│   ├── middleware.py              # Logging & rate limiting
+│   └── routes/                    # API endpoints
+├── docs/                          # Documentation
+├── tests/                         # Test suites (284 tests)
+└── scripts/                       # Utility scripts
+```
+
+---
+
+## Testing
 
 ```bash
-# 运行所有测试
+# Run all tests
 uv run pytest
 
-# 运行特定测试
-uv run pytest scenarios/log_analyzer/tests/
-
-# 运行覆盖率报告
+# Run with coverage
 uv run pytest --cov=core --cov=scenarios --cov=api --cov-report=html
 
-# 运行 lint
+# Run linting
 uv run ruff check .
 
-# 运行类型检查
+# Run type checking
 uv run mypy core/ scenarios/ api/
 ```
 
-### 测试指标
+| Metric | Value |
+|--------|-------|
+| Tests | 284 |
+| Pass Rate | 100% |
+| Coverage | 92% |
+| Mypy Errors | 0 |
+| Ruff Errors | 0 |
 
-| 指标 | 值 |
-|------|-----|
-| 测试数量 | 284 |
-| 测试通过率 | 100% |
-| 代码覆盖率 | 92% |
-| Mypy 错误 | 0 |
-| Lint 错误 | 0 |
+---
 
-## API 端点
+## Documentation
 
-| 端点 | 方法 | 功能 |
-|------|------|------|
-| /health | GET | 健康检查 |
-| /api/v1/analyze-log | POST | 日志分析 |
-| /api/v1/diagnose | POST | Bug 诊断 |
-| /api/v1/history | GET | 历史列表 |
-| /api/v1/history/{id} | GET | 获取报告 |
-| /api/v1/history/{id} | DELETE | 删除报告 |
-| /api/v1/history/search/{q} | GET | 搜索历史 |
-| /api/v1/knowledge | GET | 知识库列表 |
-| /api/v1/knowledge/{id} | GET | 获取知识条目 |
-| /api/v1/knowledge/search/{q} | GET | 搜索知识库 |
+| Document | Description |
+|----------|-------------|
+| [Getting Started](docs/getting-started.md) | Installation and first steps |
+| [Architecture](docs/architecture.md) | System design and data flows |
+| [API Reference](docs/api-reference.md) | REST API endpoints |
+| [Best Practices](docs/best-practices.md) | Usage recommendations |
+| [FAQ](docs/faq.md) | Frequently asked questions |
+| [Competitor Analysis](docs/competitor-analysis.md) | Comparison with Sentry, Datadog, etc. |
+| [Roadmap](docs/roadmap-v2.md) | Future plans |
+| [Community](docs/community.md) | Contributing and community guidelines |
 
-## 文档
+---
 
-- [Getting Started](docs/getting-started.md) - 快速开始
-- [API Reference](docs/api-reference.md) - API 参考
-- [Best Practices](docs/best-practices.md) - 最佳实践
-- [FAQ](docs/faq.md) - 常见问题
-- [Architecture](docs/architecture-v2.md) - 系统架构
-- [Competitor Analysis](docs/competitor-analysis.md) - 竞品分析
-- [Roadmap](docs/roadmap-v2.md) - 产品路线图
-- [Community](docs/community.md) - 社区指南
+## Contributing
 
-## 竞品对比
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-| 特性 | Agent Bug Killer | Sentry | Datadog | LangSmith |
-|------|------------------|--------|---------|-----------|
-| AI 根因分析 | ✅ | ❌ | 部分 | ❌ |
-| 多源关联 | ✅ | ❌ | ✅ | ❌ |
-| 修复建议 | ✅ | ❌ | ❌ | ❌ |
-| 知识库 | ✅ | ❌ | ❌ | ❌ |
-| 开源 | ✅ | ✅ | ❌ | ❌ |
-| 本地部署 | ✅ | ✅ | ❌ | ❌ |
+```bash
+# Fork and clone
+git clone https://github.com/YOUR_USERNAME/agent-bug-killer.git
+cd agent-bug-killer
 
-## 贡献
+# Create a feature branch
+git checkout -b feature/your-feature
 
-欢迎贡献！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详情。
+# Make changes, add tests, ensure everything passes
+uv run pytest
+uv run ruff check .
+uv run mypy core/ scenarios/ api/
 
-### 贡献方式
+# Submit a PR
+```
 
-1. 报告 Bug
-2. 建议新功能
-3. 提交代码
-4. 改进文档
-5. 分享知识
+### Ways to Contribute
 
-## 许可证
+- 🐛 Report bugs via [Issues](https://github.com/afine907/agent-bug-killer/issues)
+- 💡 Suggest features via [Discussions](https://github.com/afine907/agent-bug-killer/discussions)
+- 📝 Improve documentation
+- 🔧 Submit code via Pull Requests
+- ⭐ Star the repo if you find it useful!
 
-本项目采用 MIT 许可证。详见 [LICENSE](LICENSE)。
+---
 
-## 致谢
+## License
 
-感谢所有贡献者！
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
-## 联系方式
+---
 
-- Issues: [GitHub Issues](https://github.com/afine907/agent-bug-killer/issues)
-- Discussions: [GitHub Discussions](https://github.com/afine907/agent-bug-killer/discussions)
-- Documentation: [docs/](docs/)
+## Acknowledgments
+
+Built with [LangChain DeepAgents](https://github.com/langchain-ai/deepagents) and powered by [Claude](https://www.anthropic.com/claude).
+
+---
+
+<p align="center">
+  <a href="https://github.com/afine907/agent-bug-killer/stargazers">⭐ Star</a> ·
+  <a href="https://github.com/afine907/agent-bug-killer/issues">🐛 Issues</a> ·
+  <a href="https://github.com/afine907/agent-bug-killer/discussions">💬 Discussions</a>
+</p>
