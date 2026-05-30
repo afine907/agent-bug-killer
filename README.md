@@ -2,8 +2,8 @@
 
 > AI-Powered Bug Diagnosis Agent — 不只监控，更要诊断
 
-[![CI](https://github.com/your-org/agent-bug-killer/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/agent-bug-killer/actions)
-[![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)](https://github.com/your-org/agent-bug-killer)
+[![CI](https://github.com/afine907/agent-bug-killer/actions/workflows/ci.yml/badge.svg)](https://github.com/afine907/agent-bug-killer/actions)
+[![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)](https://github.com/afine907/agent-bug-killer)
 [![Python](https://img.shields.io/badge/python-3.12+-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -61,7 +61,7 @@ Agent Bug Killer 是一个 AI 驱动的 Bug 诊断系统，帮助开发者更快
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # 克隆项目
-git clone https://github.com/your-org/agent-bug-killer.git
+git clone https://github.com/afine907/agent-bug-killer.git
 cd agent-bug-killer
 
 # 安装依赖
@@ -229,6 +229,6 @@ uv run mypy core/ scenarios/ api/
 
 ## 联系方式
 
-- Issues: [GitHub Issues](https://github.com/your-org/agent-bug-killer/issues)
-- Discussions: [GitHub Discussions](https://github.com/your-org/agent-bug-killer/discussions)
+- Issues: [GitHub Issues](https://github.com/afine907/agent-bug-killer/issues)
+- Discussions: [GitHub Discussions](https://github.com/afine907/agent-bug-killer/discussions)
 - Documentation: [docs/](docs/)

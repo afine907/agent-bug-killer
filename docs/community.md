@@ -141,9 +141,9 @@ Periodic hackathons for:
 
 ### Tools
 
-- [GitHub Repository](https://github.com/your-org/agent-bug-killer)
-- [Issue Tracker](https://github.com/your-org/agent-bug-killer/issues)
-- [Discussions](https://github.com/your-org/agent-bug-killer/discussions)
+- [GitHub Repository](https://github.com/afine907/agent-bug-killer)
+- [Issue Tracker](https://github.com/afine907/agent-bug-killer/issues)
+- [Discussions](https://github.com/afine907/agent-bug-killer/discussions)
 
 ## Governance
 

@@ -38,7 +38,7 @@ Currently supports:
 ### How do I install it?
 
 ```bash
-git clone https://github.com/your-org/agent-bug-killer.git
+git clone https://github.com/afine907/agent-bug-killer.git
 cd agent-bug-killer
 uv sync
 cp .env.example .env
