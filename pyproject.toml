@@ -1,10 +1,19 @@
 [project]
 name = "agent-bug-killer"
 version = "0.2.0"
-description = "通过构建线上 Bug 诊断 Agent，系统性掌握 AI Agent 开发全流程"
+description = "AI-Powered Bug Diagnosis Agent — 不只监控，更要诊断"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
+keywords = ["ai", "agent", "bug", "diagnosis", "debugging", "observability"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Software Development :: Testing",
+]
 
 dependencies = [
     "langchain>=0.3",
@@ -19,6 +28,12 @@ dependencies = [
     "fastapi>=0.136.3",
     "uvicorn>=0.48.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/afine907/agent-bug-killer"
+Documentation = "https://github.com/afine907/agent-bug-killer/tree/main/docs"
+Repository = "https://github.com/afine907/agent-bug-killer"
+Issues = "https://github.com/afine907/agent-bug-killer/issues"
 
 [project.optional-dependencies]
 dev = [

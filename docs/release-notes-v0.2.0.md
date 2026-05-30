@@ -79,11 +79,11 @@ See [CHANGELOG.md](../CHANGELOG.md) for detailed changes.
 
 ## Downloads
 
-- Source: [GitHub](https://github.com/your-org/agent-bug-killer)
+- Source: [GitHub](https://github.com/afine907/agent-bug-killer)
 - Docker: `docker pull agent-bug-killer:0.2.0`
 
 ## Support
 
-- Issues: [GitHub Issues](https://github.com/your-org/agent-bug-killer/issues)
+- Issues: [GitHub Issues](https://github.com/afine907/agent-bug-killer/issues)
 - Docs: [Documentation](./)
 - Security: [SECURITY.md](../SECURITY.md)
