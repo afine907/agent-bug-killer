@@ -1,48 +1,48 @@
-# 场景2: 线上 Bug 诊断器 (Bug Diagnoser)
+# Scenario 2: Online Bug Diagnoser (Bug Diagnoser)
 
-## 概述
+## Overview
 
-通过多数据源（SSH 服务器日志、浏览器 CDP、代码搜索）诊断线上 Bug，生成综合诊断报告。
+Diagnose production bugs through multiple data sources (SSH server logs, browser CDP, code search) and generate a comprehensive diagnostic report.
 
-## 功能
+## Features
 
-- SSH 执行远程命令和读取日志
-- CDP 浏览器截图、Console 日志、Network 请求
-- 代码搜索定位错误处理逻辑
-- 多源关联分析，生成诊断报告
+- Execute remote commands and read logs via SSH
+- CDP browser screenshots, Console logs, Network requests
+- Code search to locate error handling logic
+- Multi-source correlation analysis and diagnostic report generation
 
-## 工具
+## Tools
 
-| 工具 | 功能 |
+| Tool | Function |
 |------|------|
-| `ssh_exec` | SSH 执行远程命令 |
-| `ssh_read_log` | 读取远程日志文件 |
-| `cdp_connect` | 连接浏览器 CDP |
-| `cdp_screenshot` | 浏览器截图 |
-| `cdp_console` | 获取 Console 日志 |
-| `cdp_network` | 获取 Network 请求 |
-| `code_search` | 代码搜索 |
-| `log_parser` | 日志解析（复用自 log_analyzer） |
+| `ssh_exec` | Execute remote commands via SSH |
+| `ssh_read_log` | Read remote log files |
+| `cdp_connect` | Connect to browser CDP |
+| `cdp_screenshot` | Take browser screenshots |
+| `cdp_console` | Retrieve Console logs |
+| `cdp_network` | Retrieve Network requests |
+| `code_search` | Search code |
+| `log_parser` | Log parsing (reused from log_analyzer) |
 
-## 使用方法
+## Usage
 
 ### CLI
 
 ```bash
-# 基本诊断
+# Basic diagnosis
 uv run python scenarios/bug_diagnoser/cli.py \
-  --bug "页面白屏" \
+  --bug "white screen on page" \
   --host prod-server \
   --user deploy \
   --key ~/.ssh/id_rsa
 
-# 带浏览器诊断
+# Diagnosis with browser
 uv run python scenarios/bug_diagnoser/cli.py \
-  --bug "接口超时" \
+  --bug "API timeout" \
   --host api-server \
   --browser ws://localhost:9222/devtools/browser/...
 
-# 带代码搜索
+# Diagnosis with code search
 uv run python scenarios/bug_diagnoser/cli.py \
   --bug "NPE in checkout" \
   --code /path/to/source
@@ -54,7 +54,7 @@ uv run python scenarios/bug_diagnoser/cli.py \
 from scenarios.bug_diagnoser.src.agent import diagnose_bug
 
 result = diagnose_bug(
-    bug_description="页面白屏",
+    bug_description="white screen on page",
     server_info={"host": "prod-server", "user": "deploy"},
     browser_ws="ws://localhost:9222/devtools/browser/...",
     code_path="/path/to/source",
@@ -62,18 +62,18 @@ result = diagnose_bug(
 print(result)
 ```
 
-## 前置条件
+## Prerequisites
 
-- SSH: 需要可访问的服务器和密钥
-- CDP: 需要运行中的 Chrome（`chrome --remote-debugging-port=9222`）
-- Code: 需要本地源代码目录
+- SSH: Requires an accessible server and key
+- CDP: Requires a running Chrome instance (`chrome --remote-debugging-port=9222`)
+- Code: Requires a local source code directory
 
-## 测试
+## Testing
 
 ```bash
-# 运行单元测试
+# Run unit tests
 uv run pytest scenarios/bug_diagnoser/tests/ -v
 
-# 运行集成测试
+# Run integration tests
 uv run pytest scenarios/bug_diagnoser/tests/ -v -m integration
 ```

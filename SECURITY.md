@@ -4,6 +4,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 0.3.x   | :white_check_mark: |
+| 0.2.x   | :white_check_mark: |
 | 0.1.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
@@ -13,7 +15,7 @@ If you discover a security vulnerability, please report it responsibly.
 ### How to Report
 
 1. **Do NOT** open a public GitHub issue
-2. Email security concerns to: [your-email@example.com]
+2. Email security concerns to: [security@agent-bug-killer.dev](mailto:security@agent-bug-killer.dev)
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce

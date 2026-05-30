@@ -10,7 +10,7 @@ Welcome to the Agent Bug Killer documentation!
 ## Architecture & Design
 
 - [Architecture](./architecture.md) — System architecture with Mermaid diagrams
-- [Architecture V2](./architecture-v2.md) — Layered architecture overview
+- [Architecture](./architecture.md) — System architecture with Mermaid diagrams
 - [Competitor Analysis](./competitor-analysis.md) — Comparison with Sentry, Datadog, LangSmith
 - [Roadmap](./roadmap-v2.md) — Future plans and phases
 

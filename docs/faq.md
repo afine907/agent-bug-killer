@@ -173,11 +173,11 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for details.
 
 ### Where do I report bugs?
 
-Use GitHub Issues: [link]
+Use [GitHub Issues](https://github.com/afine907/agent-bug-killer/issues)
 
 ### Where do I ask questions?
 
-Use GitHub Discussions: [link]
+Use [GitHub Discussions](https://github.com/afine907/agent-bug-killer/discussions)
 
 ## Roadmap
 

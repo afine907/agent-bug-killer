@@ -1,38 +1,38 @@
-# 场景1: 日志分析器 (Log Analyzer)
+# Scenario 1: Log Analyzer
 
-## 概述
+## Overview
 
-从日志文件中提取错误信息，分析错误模式，生成结构化诊断报告。
+Extract error information from log files, analyze error patterns, and generate structured diagnostic reports.
 
-## 功能
+## Features
 
-- 读取本地日志文件（支持多种编码）
-- 解析标准日志格式（时间戳、级别、模块、消息）
-- 提取 Python Traceback 和堆栈信息
-- 生成 JSON 格式的诊断报告
+- Read local log files (with support for multiple encodings)
+- Parse standard log formats (timestamp, level, module, message)
+- Extract Python Traceback and stack trace information
+- Generate diagnostic reports in JSON format
 
-## 工具
+## Tools
 
-| 工具 | 功能 |
-|------|------|
-| `file_reader` | 读取文件内容，支持编码回退和大小限制 |
-| `log_parser` | 解析日志提取结构化错误信息 |
+| Tool | Description |
+|------|-------------|
+| `file_reader` | Read file content with encoding fallback and size limits |
+| `log_parser` | Parse logs to extract structured error information |
 
-## 使用方法
+## Usage
 
 ### CLI
 
 ```bash
-# 分析日志文件
+# Analyze a log file
 uv run python scenarios/log_analyzer/cli.py --file /path/to/error.log
 
-# 直接传入日志文本
+# Pass log text directly
 uv run python scenarios/log_analyzer/cli.py --text "2024-01-15 ERROR Something failed"
 
-# 指定输出格式
+# Specify output format
 uv run python scenarios/log_analyzer/cli.py --file app.log --output json
 
-# 调试模式
+# Debug mode
 uv run python scenarios/log_analyzer/cli.py --file app.log --debug
 ```
 
@@ -45,12 +45,12 @@ result = analyze_log("/path/to/error.log")
 print(result)
 ```
 
-## 测试
+## Testing
 
 ```bash
-# 运行单元测试
+# Run unit tests
 uv run pytest scenarios/log_analyzer/tests/ -v
 
-# 运行集成测试
+# Run integration tests
 uv run pytest scenarios/log_analyzer/tests/ -v -m integration
 ```

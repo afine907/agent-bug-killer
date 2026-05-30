@@ -237,7 +237,7 @@ uv run mypy core/ scenarios/ api/
 | Document | Description |
 |----------|-------------|
 | [Getting Started](docs/getting-started.md) | Installation and first steps |
-| [Architecture](docs/architecture-v2.md) | System design and data flows |
+| [Architecture](docs/architecture.md) | System design and data flows |
 | [API Reference](docs/api-reference.md) | REST API endpoints |
 | [Best Practices](docs/best-practices.md) | Usage recommendations |
 | [FAQ](docs/faq.md) | Frequently asked questions |

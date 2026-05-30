@@ -157,7 +157,7 @@ Decisions are made by consensus:
 
 ### Code of Conduct
 
-We follow the Contributor Covenant Code of Conduct.
+We follow the [Contributor Covenant Code of Conduct](../CODE_OF_CONDUCT.md).
 
 ### Licensing
 
@@ -194,7 +194,7 @@ See [Roadmap V2](./roadmap-v2.md) for planned features.
 ### Reporting Security Issues
 
 Please report security issues privately:
-- Email: security@example.com
+- Email: [security@agent-bug-killer.dev](mailto:security@agent-bug-killer.dev)
 - See [SECURITY.md](../SECURITY.md)
 
 ## Thank You!
