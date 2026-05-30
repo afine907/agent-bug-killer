@@ -13,21 +13,6 @@ Agent Bug Killer is an AI-driven bug diagnosis system that helps developers quic
 
 ---
 
-## Why Agent Bug Killer?
-
-| Feature | Agent Bug Killer | Sentry | Datadog | LangSmith |
-|---------|:---:|:---:|:---:|:---:|
-| AI Root Cause Analysis | ✅ | ❌ | Partial | ❌ |
-| Multi-Source Correlation | ✅ | ❌ | ✅ | ❌ |
-| Fix Suggestions | ✅ | ❌ | ❌ | ❌ |
-| Knowledge Base | ✅ | ❌ | ❌ | ❌ |
-| Open Source | ✅ | ✅ | ❌ | ❌ |
-| Self-Hosted | ✅ | ✅ | ❌ | ❌ |
-| Error Grouping | ✅ | ✅ | ✅ | ❌ |
-| Metrics Collection | ✅ | ❌ | ✅ | ❌ |
-
----
-
 ## Features
 
 ### 🤖 Intelligent Diagnosis
